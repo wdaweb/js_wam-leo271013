@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cut the rope</title>
+
+  <style>
+    * {
+      margin: auto;
+      box-sizing: border-box;
+      color: white;
+    }
+
+    hr {
+      margin: auto;
+      margin-bottom: 10px;
+      width: 30%;
+      height: 2px;
+      border: 0;
+      background-image: linear-gradient(to right, rgba(124, 124, 124, 0), rgba(235, 213, 179, 0.75), rgba(124, 124, 124, 0));
+    }
+
+    .hole {
+      width: 75px;
+      height: 160px;
+    }
+
+    .hole1 {
+      width: 75px;
+      height: 75px;
+    }
+
+    .hole2 {
+      width: 75px;
+      height: 160px;
+    }
+
+    .dott {
+      width: 75px;
+      height: 75px;
+      background: url(./resource/dot.png)no-repeat center/cover;
+    }
+
+    .rc {
+      background: url(./resource/rcandy.png)no-repeat center/cover;
+    }
+
+    .rp {
+      background: url(./resource/rpoison.png)no-repeat center/cover;
+    }
+
+    .candy {
+      background: url(./resource/rrope.png)no-repeat center/cover;
+    }
+
+    .cutu {
+      background: url(./resource/cutrope.png)no-repeat center/cover;
+    }
+
+    .cutdc {
+      background: url(./resource/cutcandy.png)no-repeat center/cover;
+    }
+
+    .cutdp {
+      background: url(./resource/cutpoison.png)no-repeat center/cover;
+    }
+
+    .poison {
+      background: url(./resource/rrope.png)no-repeat center/cover;
+    }
+
+    #dot {
+      padding-top: 50px;
+      margin-bottom: -32px;
+    }
+
+    #rope {
+      margin-top: -4px;
+    }
+
+    .bottom {
+      position: absolute;
+      left: 52px;
+      bottom: 10px;
+    }
+
+    #box {
+      position: relative;
+      cursor: url(./resource/knife.png) 20 50, auto;
+      width: 800px;
+      height: 800px;
+      background: url(./resource/bg.png);
+      text-align: center;
+    }
+
+    input {
+      cursor: url(./resource/knife.png) 20 50, auto;
+    }
+
+    .gua {
+      background: url(./resource/om.png);
+    }
+
+    .frog {
+      background: url(./resource/frog.png);
+    }
+
+    @keyframes animation {
+      from {
+        top: 257px;
+      }
+
+      to {
+        top: 380px;
+      }
+    }
+
+    .animation {
+      animation-name: animation;
+      animation-duration: .5s;
+      animation-timing-function: ease;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <table id="dot">
+      <tr>
+        <td class="dott"></td>
+        <td class="dott"></td>
+        <td class="dott"></td>
+        <td class="dott"></td>
+        <td class="dott"></td>
+        <td class="dott"></td>
+        <td class="dott"></td>
+        <td class="dott"></td>
+        <td class="dott"></td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td class="hole" id="hole1"></td>
+        <td class="hole" id="hole2"></td>
+        <td class="hole" id="hole3"></td>
+        <td class="hole" id="hole4"></td>
+        <td class="hole" id="hole5"></td>
+        <td class="hole" id="hole6"></td>
+        <td class="hole" id="hole7"></td>
+        <td class="hole" id="hole8"></td>
+        <td class="hole" id="hole9"></td>
+      </tr>
+    </table>
+
+    <table id="rope">
+      <tr>
+        <td style="padding: 0;">
+          <div class="hole2" id="hole21"></div>
+        </td>
+        <td style="padding: 0;">
+          <div class="hole2" id="hole22"></div>
+        </td>
+        <td style="padding: 0;">
+          <div class="hole2" id="hole23"></div>
+        </td>
+        <td style="padding: 0;">
+          <div class="hole2" id="hole24"></div>
+        </td>
+        <td style="padding: 0;">
+          <div class="hole2" id="hole25"></div>
+        </td>
+        <td style="padding: 0;">
+          <div class="hole2" id="hole26"></div>
+        </td>
+        <td style="padding: 0;">
+          <div class="hole2" id="hole27"></div>
+        </td>
+        <td style="padding: 0;">
+          <div class="hole2" id="hole28"></div>
+        </td>
+        <td style="padding: 0;">
+          <div class="hole2" id="hole29"></div>
+        </td>
+      </tr>
+    </table>
+    <div class="bottom">
+      <table id="frog">
+        <tr>
+          <td class="hole1" id="hole11"></td>
+          <td class="hole1" id="hole12"></td>
+          <td class="hole1" id="hole13"></td>
+          <td class="hole1" id="hole14"></td>
+          <td class="hole1" id="hole15"></td>
+          <td class="hole1" id="hole16"></td>
+          <td class="hole1" id="hole17"></td>
+          <td class="hole1" id="hole18"></td>
+          <td class="hole1" id="hole19"></td>
+        </tr>
+      </table>
+      <hr>
+
+      <p style="margin-bottom: 10px;">目前分數: <span id="score">0</span>
+      <p>最高分:</p>
+      <p>玩家: <span id="highname">暫無最高分</span></p>
+      <p>分數: <span id="highscore">0</span></p>
+      </p>
+      <hr>
+    </div>
+    <div><input type="button" value="開始遊戲" id="start" style="margin: 5px;width: 100px;height: 35px;color: black;"></div>
+
+
+  </div>
+
+  <script>
+    const holes = document.getElementsByClassName('hole')
+    const hole1s = document.getElementsByClassName('hole1')
+    const hole2s = document.getElementsByClassName('hole2')
+    const start = document.getElementById('start')
+    const scoreText = document.getElementById('score')
+    const highnameText = document.getElementById('highname')
+    const highscoreText = document.getElementById('highscore')
+
+    const high = { score: 0, name: 'ABC' }
+
+    let score = 0
+    let timer = 0
+
+    const audio = new Audio()
+
+    // 讀取資料
+    const storage = JSON.parse(localStorage.getItem('dadishu'))
+
+    if (storage) {
+      high.name = storage.name
+      high.score = storage.score
+      // 修改最高分顯示文字
+      highnameText.innerText = high.name
+      highscoreText.innerText = high.score
+    }
+
+    start.onclick = () => {
+      start.disabled = true
+      score = 0
+      scoreText.innerText = score
+      // 每秒一次
+      timer = setInterval(game, 1500)
+      game()
+      // 十秒後遊戲結束
+      setTimeout(end, 15 * 1000)
+    }
+    // 每秒變換顏色
+    const game = () => {
+      for (const hole1 of hole1s) {
+        hole1.classList.remove('gua')
+        hole1.classList.remove('frog')
+      }
+      for (const hole2 of hole2s) {
+        hole2.classList.remove('rc')
+        hole2.classList.remove('rp')
+        hole2.classList.remove('cutdc')
+        hole2.classList.remove('cutdp')
+      }
+      for (const hole of holes) {
+        hole.classList.remove('candy')
+        hole.classList.remove('cutu')
+        hole.classList.remove('poison')
+      }
+      for (let i = 0; i < 3; i++) {
+        ran = Math.round(Math.random() * (holes.length - 1))
+        holes[ran].classList.add('candy')
+        hole1s[ran].classList.add('gua')
+        hole2s[ran].classList.add('rc')
+      }
+      for (let i = 0; i < 2; i++) {
+        ran2 = Math.round(Math.random() * (holes.length - 1))
+        holes[ran2].classList.add('poison')
+        hole1s[ran2].classList.add('gua')
+        hole2s[ran2].classList.add('rp')
+      }
+    }
+    // 遊戲結束
+    const end = () => {
+      clearInterval(timer)
+      // 把顏色清掉
+      for (const hole of holes) {
+        hole.classList.remove('candy')
+        hole.classList.remove('cutu')
+        hole.classList.remove('poison')
+      }
+      for (const hole1 of hole1s) {
+        hole1.classList.remove('gua')
+        hole1.classList.remove('frog')
+      }
+      for (const hole2 of hole2s) {
+        hole2.classList.remove('rc')
+        hole2.classList.remove('rp')
+        hole2.classList.remove('cutdc')
+        hole2.classList.remove('cutdp')
+      }
+      start.disabled = false
+      alert(`遊戲結束，你得了${score}分`)
+      // 記錄最高分
+      if (score > high.score) {
+        // audio.src = './resource/yay.mp3'
+        // audio.play()
+
+        const input = prompt('最高分，請輸入名字')
+        high.score = score
+        high.name = input || 'ABC'
+
+        highnameText.innerText = high.name
+        highscoreText.innerText = high.score
+
+        // localStorage.setItem(資料名,文字)
+        // 變數轉文字JSON.stringify
+        localStorage.setItem('dadishu', JSON.stringify(high))
+      }
+    }
+    // 點擊變色
+    for (let i = 0; i < 9; i++) {
+      holes[i].onclick = () => {
+        if (holes[i].classList.contains('candy')) {
+          holes[i].classList.replace('candy', 'cutu')
+          hole2s[i].classList.replace('rc', 'cutdc')
+          hole1s[i].classList.replace('gua', 'frog')
+
+          score++
+          scoreText.innerText = score
+        }
+        if (holes[i].classList.contains('poison')) {
+          holes[i].classList.replace('poison', 'cutu')
+          hole2s[i].classList.replace('rp', 'cutdp')
+          hole1s[i].classList.replace('gua', 'frog')
+
+          score--
+          scoreText.innerText = score
+        }
+      }
+      hole2s[i].onclick = () => {
+        if (holes[i].classList.contains('candy')) {
+          holes[i].classList.replace('candy', 'cutu')
+          hole2s[i].classList.replace('rc', 'cutdc')
+          hole1s[i].classList.replace('gua', 'frog')
+
+          score++
+          scoreText.innerText = score
+        }
+        if (holes[i].classList.contains('poison')) {
+          holes[i].classList.replace('poison', 'cutu')
+          hole2s[i].classList.replace('rp', 'cutdp')
+          hole1s[i].classList.replace('gua', 'frog')
+
+          score--
+          scoreText.innerText = score
+        }
+      }
+    }
+
+    document.onkeydown = (event) => {
+      // 按了什麼鍵
+      const key = event.key
+      // 如果是數字鍵
+      if (!isNaN(key)) {
+        // 找到對應的格子
+        const target = document.getElementById(`hole${key}`)
+        const target1 = document.getElementById(`hole1${key}`)
+        const target2 = document.getElementById(`hole2${key}`)
+        // 如果有找到
+        if (target && target.classList.contains('candy')) {
+          target.classList.replace('candy', 'cutu')
+          target2.classList.replace('rc', 'cutdc')
+          target1.classList.replace('gua', 'frog')
+          score++
+          scoreText.innerText = score
+        }
+        if (target && target.classList.contains('poison')) {
+          target.classList.replace('poison', 'cutu')
+          target2.classList.replace('rp', 'cutdp')
+          target1.classList.replace('gua', 'frog')
+          score--
+          scoreText.innerText = score
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
