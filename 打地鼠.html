@@ -17,7 +17,7 @@
     hr {
       margin: auto;
       margin-bottom: 10px;
-      width: 30%;
+      width: 50%;
       height: 2px;
       border: 0;
       background-image: linear-gradient(to right, rgba(124, 124, 124, 0), rgba(235, 213, 179, 0.75), rgba(124, 124, 124, 0));
@@ -84,7 +84,7 @@
     .bottom {
       position: absolute;
       left: 52px;
-      bottom: 10px;
+      bottom: 0px;
     }
 
     #box {
@@ -123,6 +123,20 @@
       animation-duration: .5s;
       animation-timing-function: ease;
     }
+
+    #sgame {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      cursor: url(./resource/knife.png) 20 50, auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      top: 0px;
+      line-height: 800px;
+    }
+
+    .hide {
+      display: none;
+    }
   </style>
 </head>
 
@@ -157,32 +171,23 @@
 
     <table id="rope">
       <tr>
-        <td style="padding: 0;">
-          <div class="hole2" id="hole21"></div>
+        <td class="hole2" id="hole21">
         </td>
-        <td style="padding: 0;">
-          <div class="hole2" id="hole22"></div>
+        <td class="hole2" id="hole22">
         </td>
-        <td style="padding: 0;">
-          <div class="hole2" id="hole23"></div>
+        <td class="hole2" id="hole23">
         </td>
-        <td style="padding: 0;">
-          <div class="hole2" id="hole24"></div>
+        <td class="hole2" id="hole24">
         </td>
-        <td style="padding: 0;">
-          <div class="hole2" id="hole25"></div>
+        <td class="hole2" id="hole25">
         </td>
-        <td style="padding: 0;">
-          <div class="hole2" id="hole26"></div>
+        <td class="hole2" id="hole26">
         </td>
-        <td style="padding: 0;">
-          <div class="hole2" id="hole27"></div>
+        <td class="hole2" id="hole27">
         </td>
-        <td style="padding: 0;">
-          <div class="hole2" id="hole28"></div>
+        <td class="hole2" id="hole28">
         </td>
-        <td style="padding: 0;">
-          <div class="hole2" id="hole29"></div>
+        <td class="hole2" id="hole29">
         </td>
       </tr>
     </table>
@@ -200,16 +205,17 @@
           <td class="hole1" id="hole19"></td>
         </tr>
       </table>
-      <hr>
+      <hr style="margin-top: 20px;">
 
       <p style="margin-bottom: 10px;">目前分數: <span id="score">0</span>
-      <p>最高分:</p>
-      <p>玩家: <span id="highname">暫無最高分</span></p>
-      <p>分數: <span id="highscore">0</span></p>
+      <p style="margin-bottom: 10px;"><span>最高分玩家:<span id="highname" style="margin-right:10px;">暫無最高分</span></span>
+        <span>分數: <span id="highscore">0</span></span>
+      </p>
       </p>
       <hr>
     </div>
-    <div><input type="button" value="開始遊戲" id="start" style="margin: 5px;width: 100px;height: 35px;color: black;"></div>
+    <div id="sgame"><input type="button" value="開始遊戲" id="start"
+        style="margin: 5px;width: 100px;height: 35px;color: black;"></div>
 
 
   </div>
@@ -243,6 +249,7 @@
 
     start.onclick = () => {
       start.disabled = true
+      sgame.classList.add('hide')
       score = 0
       scoreText.innerText = score
       // 每秒一次
@@ -268,14 +275,17 @@
         hole.classList.remove('cutu')
         hole.classList.remove('poison')
       }
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 4; i++) {
         ran = Math.round(Math.random() * (holes.length - 1))
         holes[ran].classList.add('candy')
         hole1s[ran].classList.add('gua')
         hole2s[ran].classList.add('rc')
       }
-      for (let i = 0; i < 2; i++) {
+      for (let i = 0; i < 1; i++) {
         ran2 = Math.round(Math.random() * (holes.length - 1))
+        if (ran2 === ran) {
+          i--
+        }
         holes[ran2].classList.add('poison')
         hole1s[ran2].classList.add('gua')
         hole2s[ran2].classList.add('rp')
@@ -301,6 +311,7 @@
         hole2.classList.remove('cutdp')
       }
       start.disabled = false
+      sgame.classList.remove('hide')
       alert(`遊戲結束，你得了${score}分`)
       // 記錄最高分
       if (score > high.score) {
