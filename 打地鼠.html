@@ -14,6 +14,10 @@
       color: white;
     }
 
+    body {
+      background: url(./resource/body.jpg);
+    }
+
     hr {
       margin: auto;
       margin-bottom: 10px;
@@ -77,9 +81,9 @@
       margin-bottom: -32px;
     }
 
-    #rope {
-      margin-top: -4px;
-    }
+    /* #rope {
+      margin-top: -5px;
+    } */
 
     .bottom {
       position: absolute;
@@ -89,15 +93,16 @@
 
     #box {
       position: relative;
-      cursor: url(./resource/knife.png) 20 50, auto;
+      cursor: url(./resource/knife.png) 10 10, auto;
       width: 800px;
       height: 800px;
       background: url(./resource/bg.png);
       text-align: center;
+      top: 10px;
     }
 
     input {
-      cursor: url(./resource/knife.png) 20 50, auto;
+      cursor: url(./resource/knife.png) 10 10, auto;
     }
 
     .gua {
@@ -106,41 +111,150 @@
 
     .frog {
       background: url(./resource/frog.png);
+      transition-delay: .2s;
     }
 
     @keyframes animation {
       from {
-        top: 257px;
+        margin-top: 0;
       }
 
       to {
-        top: 380px;
+        margin-top: 242px;
+        visibility: hidden;
       }
     }
 
     .animation {
       animation-name: animation;
-      animation-duration: .5s;
+      animation-duration: .3s;
       animation-timing-function: ease;
+      animation-fill-mode: forwards;
     }
 
     #sgame {
       position: absolute;
       width: 800px;
       height: 800px;
-      cursor: url(./resource/knife.png) 20 50, auto;
-      background-color: rgba(0, 0, 0, 0.5);
+      cursor: url(./resource/knife.png) 10 10, auto;
+      background-color: rgba(0, 0, 0, 0.8);
       top: 0px;
-      line-height: 800px;
     }
 
     .hide {
       display: none;
     }
+
+    #start {
+      width: 200px;
+      height: 65px;
+      color: rgb(0, 0, 0);
+      font-size: 30px;
+      border-radius: 15px;
+      border: 0;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 15px;
+    }
+
+    .rule {
+      margin-top: 160px;
+      margin-bottom: 20px;
+      font-size: 30px;
+      color: rgb(185, 185, 185);
+    }
+
+    #start:hover {
+      background-color: rgb(206, 206, 206);
+    }
+
+    .rule1 {
+      margin-bottom: 20px;
+      display: flex;
+      width: 140px;
+      flex-wrap: wrap;
+    }
+
+    .rule2 {
+      font-size: 30px;
+    }
+
+
+    #hole21 {
+      position: relative;
+      padding: 0;
+      left: 53px;
+      top: 258px;
+    }
+
+    #hole22 {
+      position: relative;
+      padding: 0;
+      left: 130px;
+      top: 258px;
+    }
+
+    #hole23 {
+      position: relative;
+      padding: 0;
+      left: 207px;
+      top: 258px;
+    }
+
+    #hole24 {
+      position: relative;
+      padding: 0;
+      left: 284px;
+      top: 258px;
+    }
+
+    #hole25 {
+      position: relative;
+      padding: 0;
+      left: 361px;
+      top: 258px;
+    }
+
+    #hole26 {
+      position: relative;
+      padding: 0;
+      left: 438px;
+      top: 258px;
+    }
+
+    #hole27 {
+      position: relative;
+      padding: 0;
+      left: 515px;
+      top: 258px;
+    }
+
+    #hole28 {
+      position: relative;
+      padding: 0;
+      left: 592px;
+      top: 258px;
+    }
+
+    #hole29 {
+      position: relative;
+      padding: 0;
+      left: 669px;
+      top: 258px;
+    }
+
+    #rope div {
+      position: absolute;
+    }
+
+    .home {
+      width: 520px;
+      height: 149px;
+      background: url(./resource/home.jpg);
+    }
   </style>
 </head>
 
 <body>
+  <div class="home"></div>
   <div id="box">
     <table id="dot">
       <tr>
@@ -171,23 +285,32 @@
 
     <table id="rope">
       <tr>
-        <td class="hole2" id="hole21">
+        <td>
+          <div class="hole2" id="hole21"></div>
         </td>
-        <td class="hole2" id="hole22">
+        <td>
+          <div class="hole2" id="hole22"></div>
         </td>
-        <td class="hole2" id="hole23">
+        <td>
+          <div class="hole2" id="hole23"></div>
         </td>
-        <td class="hole2" id="hole24">
+        <td>
+          <div class="hole2" id="hole24"></div>
         </td>
-        <td class="hole2" id="hole25">
+        <td>
+          <div class="hole2" id="hole25"></div>
         </td>
-        <td class="hole2" id="hole26">
+        <td>
+          <div class="hole2" id="hole26"></div>
         </td>
-        <td class="hole2" id="hole27">
+        <td>
+          <div class="hole2" id="hole27"></div>
         </td>
-        <td class="hole2" id="hole28">
+        <td>
+          <div class="hole2" id="hole28"></div>
         </td>
-        <td class="hole2" id="hole29">
+        <td>
+          <div class="hole2" id="hole29"></div>
         </td>
       </tr>
     </table>
@@ -214,9 +337,17 @@
       </p>
       <hr>
     </div>
-    <div id="sgame"><input type="button" value="開始遊戲" id="start"
-        style="margin: 5px;width: 100px;height: 35px;color: black;"></div>
-
+    <div id="sgame">
+      <div class="rule">使用滑鼠或鍵盤對應數字鍵...</div>
+      <div class="rule" style="margin-top: 0px;">遊戲時間: 15 s</div>
+      <div class="rule1">
+        <div class="rule2"><img src="./resource/candy.png" alt=""></div>
+        <div class="rule2">+1分</div>
+        <div class="rule2"><img src="./resource/poison.png" alt=""></div>
+        <div class="rule2">-1分</div>
+      </div>
+      <input type="button" value="開始遊戲" id="start">
+    </div>
 
   </div>
 
@@ -229,12 +360,14 @@
     const highnameText = document.getElementById('highname')
     const highscoreText = document.getElementById('highscore')
 
-    const high = { score: 0, name: 'ABC' }
+    const high = { score: 0, name: '匿名' }
 
     let score = 0
     let timer = 0
 
-    const audio = new Audio()
+    // const audio = new Audio()
+    // audio.src = './resource/29meu-fdhr2.mp3'
+    // audio.preload = 'auto'
 
     // 讀取資料
     const storage = JSON.parse(localStorage.getItem('dadishu'))
@@ -252,75 +385,71 @@
       sgame.classList.add('hide')
       score = 0
       scoreText.innerText = score
-      // 每秒一次
+      // 每一輪
       timer = setInterval(game, 1500)
       game()
-      // 十秒後遊戲結束
+      // 遊戲結束
       setTimeout(end, 15 * 1000)
     }
-    // 每秒變換顏色
+    // 遊戲開始
     const game = () => {
-      for (const hole1 of hole1s) {
-        hole1.classList.remove('gua')
-        hole1.classList.remove('frog')
+      // 先清
+      for (let i = 0; i < 9; i++) {
+        hole1s[i].classList.remove('gua')
+        hole1s[i].classList.remove('frog')
+
+        hole2s[i].classList.remove('rc')
+        hole2s[i].classList.remove('rp')
+        hole2s[i].classList.remove('cutdc')
+        hole2s[i].classList.remove('cutdp')
+        hole2s[i].classList.remove('animation')
+
+        holes[i].classList.remove('candy')
+        holes[i].classList.remove('cutu')
+        holes[i].classList.remove('poison')
       }
-      for (const hole2 of hole2s) {
-        hole2.classList.remove('rc')
-        hole2.classList.remove('rp')
-        hole2.classList.remove('cutdc')
-        hole2.classList.remove('cutdp')
-      }
-      for (const hole of holes) {
-        hole.classList.remove('candy')
-        hole.classList.remove('cutu')
-        hole.classList.remove('poison')
-      }
+      // 隨機變色
       for (let i = 0; i < 4; i++) {
         ran = Math.round(Math.random() * (holes.length - 1))
         holes[ran].classList.add('candy')
         hole1s[ran].classList.add('gua')
         hole2s[ran].classList.add('rc')
       }
-      for (let i = 0; i < 1; i++) {
+      for (let j = 0; j < 1; j++) {
         ran2 = Math.round(Math.random() * (holes.length - 1))
-        if (ran2 === ran) {
-          i--
-        }
         holes[ran2].classList.add('poison')
         hole1s[ran2].classList.add('gua')
         hole2s[ran2].classList.add('rp')
+        hole2s[ran2].classList.remove('rc')
+        holes[ran2].classList.remove('candy')
       }
     }
     // 遊戲結束
     const end = () => {
       clearInterval(timer)
       // 把顏色清掉
-      for (const hole of holes) {
-        hole.classList.remove('candy')
-        hole.classList.remove('cutu')
-        hole.classList.remove('poison')
-      }
-      for (const hole1 of hole1s) {
-        hole1.classList.remove('gua')
-        hole1.classList.remove('frog')
-      }
-      for (const hole2 of hole2s) {
-        hole2.classList.remove('rc')
-        hole2.classList.remove('rp')
-        hole2.classList.remove('cutdc')
-        hole2.classList.remove('cutdp')
+      for (let i = 0; i < 9; i++) {
+        holes[i].classList.remove('candy')
+        holes[i].classList.remove('cutu')
+        holes[i].classList.remove('poison')
+
+        hole1s[i].classList.remove('gua')
+        hole1s[i].classList.remove('frog')
+
+        hole2s[i].classList.remove('rc')
+        hole2s[i].classList.remove('rp')
+        hole2s[i].classList.remove('cutdc')
+        hole2s[i].classList.remove('cutdp')
       }
       start.disabled = false
       sgame.classList.remove('hide')
       alert(`遊戲結束，你得了${score}分`)
       // 記錄最高分
       if (score > high.score) {
-        // audio.src = './resource/yay.mp3'
-        // audio.play()
 
-        const input = prompt('最高分，請輸入名字')
+        const input = prompt('!!新紀錄!!，請輸入您的名字')
         high.score = score
-        high.name = input || 'ABC'
+        high.name = input || '匿名'
 
         highnameText.innerText = high.name
         highscoreText.innerText = high.score
@@ -330,13 +459,15 @@
         localStorage.setItem('dadishu', JSON.stringify(high))
       }
     }
-    // 點擊變色
     for (let i = 0; i < 9; i++) {
+      // 點擊變色
       holes[i].onclick = () => {
         if (holes[i].classList.contains('candy')) {
           holes[i].classList.replace('candy', 'cutu')
           hole2s[i].classList.replace('rc', 'cutdc')
           hole1s[i].classList.replace('gua', 'frog')
+          hole2s[i].classList.add('animation')
+          // audio.play()
 
           score++
           scoreText.innerText = score
@@ -345,24 +476,30 @@
           holes[i].classList.replace('poison', 'cutu')
           hole2s[i].classList.replace('rp', 'cutdp')
           hole1s[i].classList.replace('gua', 'frog')
+          hole2s[i].classList.add('animation')
+          // audio.play()
 
           score--
           scoreText.innerText = score
         }
       }
       hole2s[i].onclick = () => {
-        if (holes[i].classList.contains('candy')) {
+        if (hole2s[i].classList.contains('rc')) {
           holes[i].classList.replace('candy', 'cutu')
           hole2s[i].classList.replace('rc', 'cutdc')
           hole1s[i].classList.replace('gua', 'frog')
+          hole2s[i].classList.add('animation')
+          // audio.play()
 
           score++
           scoreText.innerText = score
         }
-        if (holes[i].classList.contains('poison')) {
+        if (hole2s[i].classList.contains('rp')) {
           holes[i].classList.replace('poison', 'cutu')
           hole2s[i].classList.replace('rp', 'cutdp')
           hole1s[i].classList.replace('gua', 'frog')
+          hole2s[i].classList.add('animation')
+          // audio.play()
 
           score--
           scoreText.innerText = score
@@ -382,15 +519,19 @@
         // 如果有找到
         if (target && target.classList.contains('candy')) {
           target.classList.replace('candy', 'cutu')
-          target2.classList.replace('rc', 'cutdc')
           target1.classList.replace('gua', 'frog')
+          target2.classList.replace('rc', 'cutdc')
+          target2.classList.add('animation')
+
           score++
           scoreText.innerText = score
         }
         if (target && target.classList.contains('poison')) {
           target.classList.replace('poison', 'cutu')
-          target2.classList.replace('rp', 'cutdp')
           target1.classList.replace('gua', 'frog')
+          target2.classList.replace('rp', 'cutdp')
+          target2.classList.add('animation')
+
           score--
           scoreText.innerText = score
         }
