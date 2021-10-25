@@ -181,63 +181,63 @@
     #hole21 {
       position: relative;
       padding: 0;
-      left: 53px;
+      left: 54px;
       top: 258px;
     }
 
     #hole22 {
       position: relative;
       padding: 0;
-      left: 130px;
+      left: 131px;
       top: 258px;
     }
 
     #hole23 {
       position: relative;
       padding: 0;
-      left: 207px;
+      left: 208px;
       top: 258px;
     }
 
     #hole24 {
       position: relative;
       padding: 0;
-      left: 284px;
+      left: 285px;
       top: 258px;
     }
 
     #hole25 {
       position: relative;
       padding: 0;
-      left: 361px;
+      left: 362px;
       top: 258px;
     }
 
     #hole26 {
       position: relative;
       padding: 0;
-      left: 438px;
+      left: 439px;
       top: 258px;
     }
 
     #hole27 {
       position: relative;
       padding: 0;
-      left: 515px;
+      left: 516px;
       top: 258px;
     }
 
     #hole28 {
       position: relative;
       padding: 0;
-      left: 592px;
+      left: 593px;
       top: 258px;
     }
 
     #hole29 {
       position: relative;
       padding: 0;
-      left: 669px;
+      left: 670px;
       top: 258px;
     }
 
@@ -246,8 +246,8 @@
     }
 
     .home {
-      width: 520px;
-      height: 149px;
+      width: 419px;
+      height: 120px;
       background: url(./resource/home.jpg);
     }
   </style>
@@ -365,9 +365,13 @@
     let score = 0
     let timer = 0
 
-    // const audio = new Audio()
-    // audio.src = './resource/29meu-fdhr2.mp3'
-    // audio.preload = 'auto'
+    const audio = new Audio()
+    audio.src = './resource/eat.mp3'
+    audio.preload = 'auto'
+
+    const audio2 = new Audio()
+    audio2.src = './resource/cut.mp3'
+    audio2.preload = 'auto'
 
     // 讀取資料
     const storage = JSON.parse(localStorage.getItem('dadishu'))
@@ -447,7 +451,7 @@
       // 記錄最高分
       if (score > high.score) {
 
-        const input = prompt('!!新紀錄!!，請輸入您的名字')
+        const input = prompt('新紀錄!，請輸入您的名字')
         high.score = score
         high.name = input || '匿名'
 
@@ -467,7 +471,14 @@
           hole2s[i].classList.replace('rc', 'cutdc')
           hole1s[i].classList.replace('gua', 'frog')
           hole2s[i].classList.add('animation')
-          // audio.play()
+          audio.pause();
+          audio.currentTime = 0;
+          setTimeout(function () {
+            audio.play();
+          }, 300);
+          audio2.pause();
+          audio2.currentTime = 0;
+          audio2.play();
 
           score++
           scoreText.innerText = score
@@ -477,7 +488,14 @@
           hole2s[i].classList.replace('rp', 'cutdp')
           hole1s[i].classList.replace('gua', 'frog')
           hole2s[i].classList.add('animation')
-          // audio.play()
+          audio.pause();
+          audio.currentTime = 0;
+          setTimeout(function () {
+            audio.play();
+          }, 300);
+          audio2.pause();
+          audio2.currentTime = 0;
+          audio2.play();
 
           score--
           scoreText.innerText = score
@@ -489,7 +507,14 @@
           hole2s[i].classList.replace('rc', 'cutdc')
           hole1s[i].classList.replace('gua', 'frog')
           hole2s[i].classList.add('animation')
-          // audio.play()
+          audio.pause();
+          audio.currentTime = 0;
+          setTimeout(function () {
+            audio.play();
+          }, 300);
+          audio2.pause();
+          audio2.currentTime = 0;
+          audio2.play();
 
           score++
           scoreText.innerText = score
@@ -499,7 +524,14 @@
           hole2s[i].classList.replace('rp', 'cutdp')
           hole1s[i].classList.replace('gua', 'frog')
           hole2s[i].classList.add('animation')
-          // audio.play()
+          audio.pause();
+          audio.currentTime = 0;
+          setTimeout(function () {
+            audio.play();
+          }, 300);
+          audio2.pause();
+          audio2.currentTime = 0;
+          audio2.play();
 
           score--
           scoreText.innerText = score
@@ -523,6 +555,15 @@
           target2.classList.replace('rc', 'cutdc')
           target2.classList.add('animation')
 
+          audio.pause();
+          audio.currentTime = 0;
+          setTimeout(function () {
+            audio.play();
+          }, 300);
+          audio2.pause();
+          audio2.currentTime = 0;
+          audio2.play();
+
           score++
           scoreText.innerText = score
         }
@@ -531,6 +572,15 @@
           target1.classList.replace('gua', 'frog')
           target2.classList.replace('rp', 'cutdp')
           target2.classList.add('animation')
+
+          audio.pause();
+          audio.currentTime = 0;
+          setTimeout(function () {
+            audio.play();
+          }, 300);
+          audio2.pause();
+          audio2.currentTime = 0;
+          audio2.play();
 
           score--
           scoreText.innerText = score
